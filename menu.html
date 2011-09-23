@@ -1,23 +1,63 @@
 <html>
 <head>
-<script type="text/javascript"> 
-	var base_url='http://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/';
 
-	function get_chrome()
+<style>
+  
+  #cell:hover {
+    -webkit-transition: all .5s ease-out;
+	background: #ddd;
+  }
+  #cell{
+    border-radius: 3px;
+	-moz-border-radius: 3px;
+	width: 110px;
+	height: 25px;
+	margin: 4px;
+	text-align: center;
+	vertical-align:middle;
+	border: 1px solid #bbb;
+	background: #fff;
+  }
+  
+</style>
+
+<script type="text/javascript"> 
+	var base_url = 'http://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/';
+	var url = base_url;
+	
+	function get_version()
 	{
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", base_url + "LAST_CHANGE", true);
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				var url = base_url + xhr.responseText + "/chrome-win32.zip";
-				window.open(url);
+				url = base_url + xhr.responseText + "/chrome-win32.zip";
+				//window.open(url);
 			}
 		};
 		xhr.send(null);
 	}
+	
+	function get_chrome()
+	{
+		window.open(url);
+	}
 
-	chrome.browserAction.onClicked.addListener(get_chrome);
-	get_chrome();
+	chrome.browserAction.onClicked.addListener(get_version);
+	get_version();
 </script>
+
 </head>
+<body>
+
+<div id="wrapper">
+	<div id="cell">
+		<div id="content">Current: 102323</div>
+	</div>
+	<div id="cell">
+		<div id="content" onclick="javascript:get_chrome()">Latest:</div>
+	</div>
+</div>
+
+</body>
 </html>
