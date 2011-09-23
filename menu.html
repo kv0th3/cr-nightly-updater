@@ -1,0 +1,23 @@
+<html>
+<head>
+<script type="text/javascript"> 
+	var base_url='http://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/';
+
+	function get_chrome()
+	{
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", base_url + "LAST_CHANGE", true);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				var url = base_url + xhr.responseText + "/chrome-win32.zip";
+				window.open(url);
+			}
+		};
+		xhr.send(null);
+	}
+
+	chrome.browserAction.onClicked.addListener(get_chrome);
+	get_chrome();
+</script>
+</head>
+</html>
