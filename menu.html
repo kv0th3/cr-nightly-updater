@@ -18,8 +18,14 @@
 	background: #fff;
 	font-weight: bold;
   }
-  #content{
+  #content0{
 	margin: 4px;
+  }
+  #content1{
+	margin: 4px;
+  }
+  #content1:hover {
+	cursor: hand;
   }
   span {
 	font-weight:normal;
@@ -63,10 +69,10 @@
 
 <div id="wrapper">
 	<div id="cell">
-		<div id="content">Current: <span id="current_version"></span></div>
+		<div id="content0">Current: <span id="current_version"></span></div>
 	</div>
 	<div id="cell">
-		<div id="content" onclick="javascript:get_chrome()">Latest: <span id="latest_version"></span></div>
+		<div id="content1" onclick="javascript:get_chrome()">Latest: <span id="latest_version"></span></div>
 	</div>
 </div>
 
