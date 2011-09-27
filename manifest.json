@@ -7,6 +7,6 @@
     "popup": "menu.html"
   },
   "permissions": [
-    "http://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/"
+    "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/"
   ]
 }
