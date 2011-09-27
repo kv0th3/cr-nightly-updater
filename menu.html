@@ -10,13 +10,19 @@
   #cell{
     border-radius: 3px;
 	-moz-border-radius: 3px;
-	width: 110px;
+	width: 140px;
 	height: 25px;
 	margin: 4px;
-	text-align: center;
 	vertical-align:middle;
 	border: 1px solid #bbb;
 	background: #fff;
+	font-weight: bold;
+  }
+  #content{
+	margin: 4px;
+  }
+  span {
+	font-weight:normal;
   }
   
 </style>
@@ -33,6 +39,11 @@
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				url = base_url + xhr.responseText + "/chrome-win32.zip";
 				//window.open(url);
+				
+				var ua = window.navigator.userAgent;
+				
+				document.getElementById('latest_version').innerHTML = xhr.responseText;
+				document.getElementById('current_version').innerHTML = (ua.match( /.+(?:rv|it|ra|ie|me)[\/: ]([\d.]+)/ ) || [])[1];
 			}
 		};
 		xhr.send(null);
@@ -52,10 +63,10 @@
 
 <div id="wrapper">
 	<div id="cell">
-		<div id="content">Current: 102323</div>
+		<div id="content">Current: <span id="current_version"></span></div>
 	</div>
 	<div id="cell">
-		<div id="content" onclick="javascript:get_chrome()">Latest:</div>
+		<div id="content" onclick="javascript:get_chrome()">Latest: <span id="latest_version"></span></div>
 	</div>
 </div>
 
