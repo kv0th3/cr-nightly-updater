@@ -50,7 +50,7 @@
       file = "chrome-linux.zip";
     }
 
-    xhr.open("GET", base_url + dir + "LAST_CHANGE", true);
+    xhr.open("GET", base_url + dir + "LAST_CHANGE?" + (new Date).getTime(), true);
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
         url = base_url + dir + xhr.responseText + "/" + file;
