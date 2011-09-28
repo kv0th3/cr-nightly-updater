@@ -1,12 +1,12 @@
 {
   "name": "Get Latest Nightly",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Downloads latest Chromium nightly build",
   "browser_action": {
     "default_icon": "icon.png",
     "popup": "menu.html"
   },
   "permissions": [
-    "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/"
+    "https://commondatastorage.googleapis.com/chromium-browser-snapshots/"
   ]
 }
