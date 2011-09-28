@@ -34,17 +34,27 @@
 </style>
 
 <script type="text/javascript"> 
-	var base_url = 'https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/';
+	//var base_url = 'https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/';
+	var base_url = 'https://commondatastorage.googleapis.com/chromium-browser-snapshots/';
 	var url = base_url;
 	
 	function get_version()
 	{
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", base_url + "LAST_CHANGE", true);
+    var dir;
+    var file;
+    if (navigator.appVersion.indexOf("Linux")==-1){
+      dir = "Win/";
+      file = "chrome-win32.zip";
+    } else {
+      dir = "Linux_x64/";
+      file = "chrome-linux.zip";
+    }
+
+    xhr.open("GET", base_url + dir + "LAST_CHANGE", true);
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
-				url = base_url + xhr.responseText + "/chrome-win32.zip";
-				//window.open(url);
+        url = base_url + dir + xhr.responseText + "/" + file;
 				
 				var ua = window.navigator.userAgent;
 				
