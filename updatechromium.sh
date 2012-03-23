@@ -31,5 +31,6 @@ else
 	echo "done!"
 fi
 
+sleep 3
 
 exit 0
