@@ -5,9 +5,16 @@ if [ ! -x /usr/bin/curl ]; then
     exit 1
 fi
 
-echo -n "Determining latest build... "
-LATEST=`curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/LAST_CHANGE`
-echo "done!"
+if [ $# -ne 1 ] 
+then
+	echo -n "Determining latest build... "
+	LATEST=`curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/LAST_CHANGE`
+	echo "done!"
+else 
+	echo -n "Downloading build for $1"
+	LATEST=$1;
+fi
+
 echo "http://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/$LATEST/chrome-win32.zip"
 echo -n "Downloading build for $LATEST... "
 wget http://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/$LATEST/chrome-win32.zip
